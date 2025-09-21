@@ -6,8 +6,8 @@ int main(){
     int i;
     int k;
     printf("Enter 2 values \n");
-    scanf("%d" , &i);    // The "&"" sign gives us the address of the variable
-    scanf("%d" , &j);
+    scanf("%d %d" , &j, &i);    // The "&"" sign gives us the address of the variable
+
     k = i + j;
     printf("The Value of addition of %d and %d is \n %d" , j ,i ,k );  // This is callled as print format
     return 0;
