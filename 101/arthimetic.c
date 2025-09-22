@@ -1,0 +1,19 @@
+#include<stdio.h>
+// Ternary operator ->  condition?exp1:exp2
+int main(){
+
+    int j;  // If not defined it will take a random varible called garbage value
+    int i;
+    int k;
+    printf("Enter 2 values \n");
+    scanf("%d %d" , &j, &i);    // The "&"" sign gives us the address of the variable
+
+    k = i + j;
+    k = i - j;
+    k = i * j;
+    k = i / j;
+    printf("The Value of addition of %d and %d is \n %d" , j ,i ,k );  // This is callled as print format
+    return 0;
+
+}
+
