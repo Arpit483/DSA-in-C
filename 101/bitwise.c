@@ -10,10 +10,10 @@ int main (){
 
 int a , b , c;
 
-a = 5;
+a = 5;         
 b =6;
 
-a = a^b;
+a = a^b;  
 b = a^b;
 a = a^b;
 
