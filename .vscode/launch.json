@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/DSA in C/101",
-      "program": "d:/DSA in C/101/build/Debug/outDebug",
+      "cwd": "d:/DSA in C/Cipher/Class/Arrays",
+      "program": "d:/DSA in C/Cipher/Class/Arrays/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
