@@ -11,7 +11,7 @@ typedef struct student
 
 std* create (std *head);
 void display (std *head);
-void find (std* head , int key);
+std* add(std *head);
 
 int main(void)
 {
@@ -21,8 +21,9 @@ int main(void)
     printf("---------------------------Display---------------------------\n");
     display(start);
 
-    printf("---------------------------Find---------------------------\n");
-    find(start , 2);
+    start = add(start);
+    printf("---------------------------After Add---------------------------\n");
+    display(start);
 
 }
 
@@ -60,6 +61,7 @@ std* create (std *head)
 
 }
 
+
 void display (std *head)
 {
     std *p = head;
@@ -71,15 +73,35 @@ void display (std *head)
     }
 }
 
-
-void find (std* head , int key)
+std* add (std *head)
 {
-    std *p = head;
-    while (p ->rollno != key && p != NULL)
+    if(head == NULL || head->next == NULL)
+        return head;
+        
+    std *a = head , *b = head->next;
+    std *new;   
+
+
+    while(a != NULL && b != NULL)
     {
-        p = p->next;
+        new = (std*) malloc (sizeof(std));
+        new ->rollno = a ->rollno + b->rollno;
+
+        strcpy(new->name, a->name);
+        strcat(new->name, b->name);
+
+        new->next = NULL;
+
+        new ->next = b ->next;
+        b->next = new;
+
+        a = new->next;
+        if(a != NULL)
+        {
+            b = a->next;
+        }
+
     }
-    printf("Name : %s \t Roll No : %d" , p->name , p->rollno);
+    
+    return head;    
 }
-
-
