@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/DSA in C/Cipher/Assignment/Dynamic Memory Allocation/Question 2",
-      "program": "d:/DSA in C/Cipher/Assignment/Dynamic Memory Allocation/Question 2/build/Debug/outDebug",
+      "cwd": "d:/DSA in C/Cipher/Assignment/Linked List/Question 3",
+      "program": "d:/DSA in C/Cipher/Assignment/Linked List/Question 3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
