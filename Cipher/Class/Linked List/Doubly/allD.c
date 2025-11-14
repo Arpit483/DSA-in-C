@@ -15,6 +15,9 @@ void display(dll *head);
 void reverse_display(dll *head);
 dll* ins_start(dll *head);
 void ins_end(dll *head);
+dll* insert_after_pos(dll *head , int pos);
+dll* insert_before_pos(dll *head , int pos);
+dll* insert_at_pos(dll *head , int pos);
 
 int main()
 {
@@ -33,6 +36,9 @@ int main()
       printf("2 . Reverse Display \n");
       printf("3 . Insert Head \n");
       printf("4 . Insert End \n");
+      printf("5 . Insert After \n");
+      printf("6 . Insert Before \n");
+      printf("7 . Insert At Position \n");
 
       printf("Enter Your Choice : ");
       scanf("%d" , &ch);
@@ -50,6 +56,15 @@ int main()
             break;
 
             case 4 : ins_end(s);
+            break;
+
+            case 5 : insert_after_pos(s , 2);
+            break;
+
+            case 6 : insert_before_pos(s , 3);
+            break;
+
+            case 7 : insert_at_pos(s , 3);
             break;
         }
 
@@ -152,4 +167,118 @@ void ins_end(dll *head)
     new->prev = head;
     new ->next = NULL;
 }
+
+dll* insert_after_pos(dll *head , int pos)
+{
+    if(head == NULL)
+    {
+        return head;
+    }
+
+    dll *n , *h = head;
+
+    printf("Enter Data");
+    n = (dll*) malloc(sizeof(dll));
+    scanf("%d" , &n->id);
+    n->next = NULL;
+    n->prev = NULL;
+
+    for(int i = 1 ; i <= pos && h!=NULL ; i++)
+    {
+        h = h->next;
+    }
+
+
+
+    if(head->next!=NULL)
+    {
+        h->next->prev = n;
+    }
+
+    n->next = h->next;
+
+    n->prev = h;
+    h->next = n;
+
+    return head;
+}
+
+
+dll* insert_at_pos(dll *head , int pos)
+{
+    if(head == NULL)
+    {
+        return head;
+    }
+
+    dll *n , *h = head;
+
+    printf("Enter Data");
+    n = (dll*) malloc(sizeof(dll));
+    scanf("%d" , &n->id);
+    n->next = NULL;
+    n->prev = NULL;
+
+    for(int i = 1 ; i < pos - 1  && h!=NULL ; i++)
+    {
+        h = h->next;
+    }
+
+    h->next->prev = n;
+    n->next = h->next;
+
+    h->next = n;
+    n->prev = h;
+
+    
+    
+    return head;
+}
+
+
+dll* insert_before_pos(dll *head , int pos)
+{
+    if(head == NULL)
+    {
+        return head;
+    }
+
+    if(pos < 2)
+    {
+        printf("Invalid Position");
+        return head;
+    }
+    if(pos == 2)
+    {
+        printf("Head Node Insertion");
+        ins_start;
+    }
+
+    dll *n , *h = head;
+
+    printf("Enter Data");
+    n = (dll*) malloc(sizeof(dll));
+    scanf("%d" , &n->id);
+    n->next = NULL;
+    n->prev = NULL;
+
+    for(int i = 1 ; i < pos - 2  && h!=NULL ; i++)
+    {
+        h = h->next;
+    }
+
+    h->next->prev = n;
+    n->next = h->next;
+
+    h->next = n;
+    n->prev = h;
+
+    
+    
+    return head;
+}
+
+
+
+
 
