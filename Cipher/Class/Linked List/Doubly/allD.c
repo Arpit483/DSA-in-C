@@ -19,6 +19,9 @@ dll* insert_after_pos(dll *head , int pos);
 dll* insert_before_pos(dll *head , int pos);
 dll* insert_at_pos(dll *head , int pos);
 
+dll* del_dup2(dll *head);
+
+
 int main()
 {
     dll *s = NULL;
@@ -39,6 +42,7 @@ int main()
       printf("5 . Insert After \n");
       printf("6 . Insert Before \n");
       printf("7 . Insert At Position \n");
+      printf("8 . Delete Duplicate 2 \n");
 
       printf("Enter Your Choice : ");
       scanf("%d" , &ch);
@@ -65,6 +69,9 @@ int main()
             break;
 
             case 7 : insert_at_pos(s , 3);
+            break;
+
+            case 8 : s = del_dup2(s);
             break;
         }
 
@@ -251,7 +258,7 @@ dll* insert_before_pos(dll *head , int pos)
     if(pos == 2)
     {
         printf("Head Node Insertion");
-        ins_start;
+       // ins_start;
     }
 
     dll *n , *h = head;
@@ -278,6 +285,55 @@ dll* insert_before_pos(dll *head , int pos)
     return head;
 }
 
+
+// dll* del_dup(dll *head)
+// {
+//     dll *h = NULL , *p =NULL;
+//     for(h = head ; h->next!=NULL ; h = h->next)
+//     {
+//         for(p = h->next ; p!=NULL ; p = p->next)
+//         {
+//             if(p->id == h->id)
+//             {
+//                 dll *q = p;
+//                 q->prev->next = q->next;
+//                 q->next->prev = q->prev;
+                
+//                free(q);
+
+//             }
+//         }
+//     }
+
+//     return head;
+// }
+
+dll* del_dup2(dll *head)
+{
+    dll *h = NULL , *p =NULL , *nxt =NULL;
+    for(h = head ; h->next!=NULL ; h = h->next)
+    {
+        p = h->next;
+        while(p != NULL)
+        {
+            nxt = p->next;
+
+            if(p->id == h->id)
+            {
+            
+            p->prev->next = p->next;
+            p->next->prev = p->prev;
+           
+             free(p);
+            }
+
+           
+            p = nxt;
+        }
+
+    }
+    return head;
+}
 
 
 
