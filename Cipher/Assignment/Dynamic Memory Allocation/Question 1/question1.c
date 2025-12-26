@@ -15,9 +15,9 @@ int main()
     char *c;
     float *f;
 
-    a = (int *) malloc (sizeof(int));
-    c = (char *) malloc (sizeof(char));
-    f = (float *) malloc (sizeof(float)); 
+    a = (int*) malloc (sizeof(int));
+    c = (char*) malloc (sizeof(char));
+    f = (float*) malloc (sizeof(float)); 
     
     *a = 4;
     c = "Aad";
