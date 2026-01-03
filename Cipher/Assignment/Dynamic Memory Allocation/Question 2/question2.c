@@ -1,13 +1,4 @@
-/*  
-
-   write a C program to input and print text using Dynamic Memory Allocation.
-   - create memory for text string at run time using malloc() function, 
-   - text string will be inputted by the user and displayed.
-   - Using free() function  release the occupied memory.
-
-*/
-
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 void single();
@@ -15,44 +6,58 @@ void multiple();
 
 int main()
 {
-    
-	single();
-    // printf("\n");
+    single();
+    printf("\n");
     multiple();
-    
-	return 0;
-}   
-   
+    return 0;
+}
 
-void single() 
+/* Allocate fixed memory for single string */
+void single()
 {
-
     char *c;
-    c = (char *) malloc (sizeof(char));
 
-    printf("%s" , "Enter A String : \n");
-    scanf("%s" , c );
+    // Allocate memory for string
+    c = (char *)malloc(50 * sizeof(char));
 
-    printf("%s \n" , c);
+    if (c == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return;
+    }
 
+    printf("Enter a String: ");
+    scanf("%s", c);
+
+    printf("Entered String: %s\n", c);
+
+    // Free memory
     free(c);
 }
 
+/* Allocate memory based on user input size */
 void multiple()
 {
     char *c;
-    int i;
-    printf("Enter Size of String : ");
-    scanf("%d" , &i);
+    int size;
 
-    c = (char *) malloc (i + 1);                     // For Null Terminator ->  In C, strings are arrays of characters that always end with a special character called the null terminator, written as: \0 It tells this is where the string ends
-    
-    printf("\nEnter The String : ");
-    scanf("%s" , c);
+    printf("Enter Size of String: ");
+    scanf("%d", &size);
 
-    printf("%s" , c);
+    // +1 for null terminator
+    c = (char *)malloc((size + 1) * sizeof(char));
 
+    if (c == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return;
+    }
+
+    printf("Enter the String: ");
+    scanf("%s", c);
+
+    printf("Entered String: %s\n", c);
+
+    // Free memory
     free(c);
-
-
 }
