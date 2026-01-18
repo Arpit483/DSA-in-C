@@ -25,6 +25,7 @@ csl* create(csl* last)
             last->next = last;
         }
         else
+
         {
             nw->next = last->next;
             last->next = nw;
@@ -56,15 +57,25 @@ void display(csl* last)
     printf("\n");
 }
 
-csl* ins_head(csl* last)
-{
-    csl *nw = (csl *)malloc(sizeof(csl));
-    printf("Enter Data: ");
-    scanf("%d", &nw->data);
 
-    nw->next = last->next;
-    last->next = nw;
-    return nw;
+csl *del_end(csl* last)
+{
+    csl *temp = last;
+    
+    while(temp->next != last)
+    {
+        temp = temp->next;
+    }
+    
+    if(temp == last)
+    {
+        free(last);
+        return NULL;
+    }
+
+    temp->next = last->next;
+    free(last);
+    return temp;
 }
 
 
@@ -73,6 +84,6 @@ int main()
     csl* last = NULL;
     last = create(last);
     display(last);
-    last = ins_head(last);
+    last = del_end(last);
     display(last);
 }

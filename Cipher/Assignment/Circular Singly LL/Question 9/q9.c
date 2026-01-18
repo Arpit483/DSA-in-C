@@ -25,6 +25,7 @@ csl* create(csl* last)
             last->next = last;
         }
         else
+
         {
             nw->next = last->next;
             last->next = nw;
@@ -56,23 +57,43 @@ void display(csl* last)
     printf("\n");
 }
 
-csl* ins_head(csl* last)
+csl* del_pos(csl* last, int pos)
 {
-    csl *nw = (csl *)malloc(sizeof(csl));
-    printf("Enter Data: ");
-    scanf("%d", &nw->data);
 
-    nw->next = last->next;
-    last->next = nw;
-    return nw;
+    csl *p = last->next;
+    
+    if(pos == 1)
+    {
+        last->next = p->next;
+        free(p);
+        return last;
+    }
+    
+    for (int i = 1; i < pos - 1 && p!= last ; i++)
+    {
+        p = p->next;
+    }
+
+    if(p == last)
+    {
+        printf("Invalid Position");
+    }
+
+    csl* temp = p->next;
+    p->next = temp->next;
+
+    if(temp == last)
+        last = p;
+
+    free(temp);
+    return last;
 }
-
 
 int main()
 {
     csl* last = NULL;
     last = create(last);
     display(last);
-    last = ins_head(last);
+    last = del_pos(last, 1);
     display(last);
 }

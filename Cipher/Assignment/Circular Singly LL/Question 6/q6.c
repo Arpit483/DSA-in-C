@@ -56,23 +56,60 @@ void display(csl* last)
     printf("\n");
 }
 
-csl* ins_head(csl* last)
+csl* del_key(csl* last , int key)
 {
-    csl *nw = (csl *)malloc(sizeof(csl));
-    printf("Enter Data: ");
-    scanf("%d", &nw->data);
+    csl *p = last;
+    csl *q = p->next;
+    
+    // if its the last node
 
-    nw->next = last->next;
-    last->next = nw;
-    return nw;
+    if(last->data == key)
+    {
+
+        if(last->next == last)
+        {
+            free(last);
+            return NULL;
+        }
+
+        while(q->next != last)
+        {
+            q = q->next;
+        }
+        q->next = last->next;
+        free(last);
+        return q;
+    }
+
+    //if not last node
+
+    while(q!= last && q->data!= key)
+    {
+        p = q;
+        q = q->next;
+
+        if(q == last && q->data != key)
+        {
+            printf("Key not found\n");
+            return last;
+        }
+
+    }
+
+    p->next = q->next;
+    free(q);
+    return last;
 }
-
 
 int main()
 {
     csl* last = NULL;
     last = create(last);
     display(last);
-    last = ins_head(last);
+
+    printf("Enter data to delete: ");
+    int key;
+    scanf("%d", &key);
+    last = del_key(last, key);
     display(last);
 }

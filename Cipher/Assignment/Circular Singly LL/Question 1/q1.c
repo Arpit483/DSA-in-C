@@ -7,55 +7,57 @@ typedef struct csll
     struct csll *next;
 }csl;
 
-csl* create(csl* head)
+csl* create(csl* last)
 {
-    int ans;
-    csl* last;
+    int n;
+    printf("Enter Number of nodes: ");
+    scanf("%d", &n);
 
-    do
+    for (int i = 0; i < n; i++)
     {
-        csl* nw = (csl*) malloc(sizeof(csl));
+        csl *nw = (csl *)malloc(sizeof(csl));
         printf("Enter Data :");
         scanf("%d" , &nw->data);
-        nw->next = NULL;
-        
-        if(head == NULL)
+    
+        if(last == NULL)
         {
-            nw->next = nw;
-            head = nw;
+            last = nw;
+            last->next = last;
         }
         else
         {
             nw->next = last->next;
-            last ->next  = nw;
+            last->next = nw;
+            last = nw;
         }
 
-        last = nw;
-
-        printf("Do you want to enter a new node(0/1): ");
-        scanf("%d" , &ans);
-
-    }while(ans == 1);
-    return head;
+    }
+    return last;
 }
 
 
-csl* display(csl* head)
+void display(csl* last)
 {
-    csl* p = head;
+    csl* temp = last;
 
+    if(last == NULL)
+    {
+        printf("List is Empty");
+        return;
+    }
+    temp = last->next;
     do
     {
-        printf("[%d] " , p->data);
-        p = p->next;
+        printf("[%d] " , temp->data);
+        temp = temp->next;
 
-    } while (p != head);
+    } while (temp != last->next);
 }
 
 
 int main()
 {
-    csl* head = NULL;
-    head = create(head);
-    display(head);
+    csl* last = NULL;
+    last = create(last);
+    display(last);
 }
