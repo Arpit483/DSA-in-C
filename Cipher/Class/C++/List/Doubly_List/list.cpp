@@ -33,7 +33,7 @@ node::node(int _data) : data(_data), prev(0), next(0)
 
 void::insert_start(int new_data)
 {
-    generic_insert(head _node, new node(new_data), head_node->next);
+    generic_insert(head_node, new node(new_data), head_node->next);
 }
 
 void::insert_end(int new_data)
@@ -124,7 +124,7 @@ void list::remove_data(int r_data)
 }
 
 std::size_t list::size() const 
-{
+{   
     std::size_t N = 0; 
 
     for(node* run = head_node->next; run != head_node; run = run->next)
@@ -215,7 +215,7 @@ list* list::merge(list* other) const
 
         if(run1->data <= run2->data)
         {
-            data = run1->data; 
+            data = run1->data;
             run1 = run1->next; 
         }
         else 
