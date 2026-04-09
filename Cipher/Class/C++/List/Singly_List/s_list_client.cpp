@@ -4,8 +4,8 @@
 void test_interlist_fn() {};
 void test_single_list_fn();
 
-int main()
 {
+    int main()
     test_interlist_fn();
     test_single_list_fn();
 }
