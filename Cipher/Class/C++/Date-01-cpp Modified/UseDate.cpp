@@ -11,8 +11,9 @@ int main()
 void testDate()
 {
     Date *p_date = allocateDate(9, 4, 2026);
-    p_date->day = 18; // Error: setDate(p_date, 18)
-    showDate(p_date);
+    //p_date->day = 18;
+    p_date->setDay(p_date, 18);
+    p_date->showDate(p_date);
 
 
 }

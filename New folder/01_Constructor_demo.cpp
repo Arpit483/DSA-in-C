@@ -3,10 +3,10 @@
 class Date
 {
     public:
-        Date()
-        {
-            std::cout << "In Date::Date()" << std::endl;
-        }
+    Date()
+    {
+        std::cout << "In Date::Date()" << std::endl;
+    }
 };
 
 void test();
@@ -16,10 +16,10 @@ int main()
     Date myDate1;
     Date myDate2;
     test();
-    return 0;
+    return (0);
 }
 
 void test()
 {
-    Date x,y,x;
+    Date X, Y, Z;
 }
